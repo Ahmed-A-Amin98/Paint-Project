@@ -1,11 +1,14 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package paintproject.model;
 
-
-public class Ellipse extends AbstractShape implements Shape,Cloneable {
-    
-public Ellipse(int x, int y) {
-super(x, y);
-}
+/**
+ *
+ * @author Ahmed Bahey
+ */
+public class Ellipse  {
     
 }
