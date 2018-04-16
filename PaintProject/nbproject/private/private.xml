@@ -5,9 +5,10 @@
         <group>
             <file>file:/C:/Users/Ahmed%20Bahey/Documents/GitHub/JinxIsMyMain/PaintProject/src/paintproject/model/Rectangle.java</file>
             <file>file:/C:/Users/Ahmed%20Bahey/Documents/GitHub/JinxIsMyMain/PaintProject/src/paintproject/controller/PaintController.java</file>
-            <file>file:/C:/Users/Ahmed%20Bahey/Documents/GitHub/JinxIsMyMain/PaintProject/src/paintproject/model/Ellipse.java</file>
             <file>file:/C:/Users/Ahmed%20Bahey/Documents/GitHub/JinxIsMyMain/PaintProject/src/paintproject/controller/PaintProject.java</file>
             <file>file:/C:/Users/Ahmed%20Bahey/Documents/GitHub/JinxIsMyMain/PaintProject/src/paintproject/controller/FXMLDocument.fxml</file>
+            <file>file:/C:/Users/Ahmed%20Bahey/Documents/GitHub/JinxIsMyMain/PaintProject/src/paintproject/model/AbstractShape.java</file>
+            <file>file:/C:/Users/Ahmed%20Bahey/Documents/GitHub/JinxIsMyMain/PaintProject/src/paintproject/model/Line.java</file>
         </group>
     </open-files>
 </project-private>

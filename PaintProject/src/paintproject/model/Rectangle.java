@@ -9,22 +9,50 @@ import java.awt.Color;
 import java.awt.Point;
 import java.util.Map;
 import javafx.event.EventHandler;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
+
+
+import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javax.imageio.ImageIO;
+import java.io.File;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
+import javafx.scene.Scene;
+
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+import static javafx.scene.paint.Color.color;
+import static javafx.scene.paint.Color.color;
+
+import static javafx.scene.paint.Color.color;
+import jdk.nashorn.internal.codegen.CompilerConstants;
+import paintproject.model.Circle;
+import paintproject.model.Line;
+import paintproject.model.Rectangle;
+
+
+
+
 
 /**
  *
  * @author Ahmed Bahey
  */
-public class Rectangle extends AbstractShape{
-
-    private static void setFill(Color green) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+public class Rectangle extends AbstractShape {
 
     private double width,height;
-
- 
-    public Rectangle(double width, double height, int x, int y) {
+    private GraphicsContext g;
+     public Rectangle(double width, double height, double x, double y) {
         super(x, y);
         this.width = width;
         this.height = height;
@@ -32,8 +60,9 @@ public class Rectangle extends AbstractShape{
         
 
     }
-  
-    
+    public  void setFill(Color green) {
+        
+    }
 
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -42,8 +71,14 @@ public class Rectangle extends AbstractShape{
 
     @Override
     public void draw(Object canvas) {
-        Rectangle rec=new Rectangle(0, 0, 0,0);
         super.draw(canvas);
+       
+        
+        
+                
+        
+                
+        
         
    
     }  
@@ -87,6 +122,24 @@ public class Rectangle extends AbstractShape{
     public void setPosition(Point position) {
         super.setPosition(position); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+    
+    
     
 }
 

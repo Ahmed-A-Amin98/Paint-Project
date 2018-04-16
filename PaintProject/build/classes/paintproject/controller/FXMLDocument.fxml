@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Menu?>
@@ -8,11 +9,12 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paintproject.controller.PaintController">
+<BorderPane prefHeight="689.0" prefWidth="829.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paintproject.controller.PaintController">
 
     <top>
         <VBox>
@@ -41,14 +43,18 @@
             <ToolBar>
                 <HBox alignment="CENTER" spacing="5">
                     <TextField fx:id="brushSize" prefHeight="31.0" prefWidth="72.0" />
+               <effect>
+                  <Glow />
+               </effect>
                 </HBox>
                  <ColorPicker fx:id="colorPicker" />
                  <CheckBox fx:id="eraser" text="Eraser" />
+            <Button fx:id="Rec" mnemonicParsing="false" onAction="#drawR" text="Rectangle" />
             </ToolBar>
         </VBox>
     </top>
    <left>
-        <Canvas fx:id="canvas" height="526.0" width="600" BorderPane.alignment="CENTER" />
+        <Canvas fx:id="canvas" height="617.0" width="828.0" BorderPane.alignment="CENTER" />
    </left>
 
 </BorderPane>
