@@ -63,7 +63,7 @@ public   class PaintController {
         GraphicsContext g = canvas.getGraphicsContext2D();
 
         
-              canvas.setOnMouseDragged(e -> {
+            canvas.setOnMouseDragged(e -> {
             double size = Double.parseDouble(brushSize.getText());
             double x = e.getX();
             double y = e.getY();
@@ -73,8 +73,6 @@ public   class PaintController {
               g.setFill(colorPicker.getValue());
               g.fillRect(x, y, size, size);
             }
-            
-            
        });
         
     }
@@ -83,38 +81,30 @@ public   class PaintController {
     public void drawR(){
         //Rectangle rect=new Rectangle(0,0,0,0);
         GraphicsContext g = canvas.getGraphicsContext2D();
-            
-
         canvas.setOnMousePressed(e->{
-            
        g.beginPath();
        x=e.getX();
-        y=e.getY();
-          
-         
+        y=e.getY();                
         });
        
-        canvas.setOnMouseDragged(e->{
-            
+        canvas.setOnMouseDragged(e->{           
        w=e.getX()-x;
-       h=e.getY()-y; 
-       
-       
+       h=e.getY()-y;     
         //rect.setFill(Color.WHITE);
        //g.clearRect(x, y, w, h);
       //  g.strokeRect(x, y,w,h);
-      g.fill();
-      g.fillRect(x, y, w, h);
-     
-       
-        
-            });
-        
-        canvas.setOnMouseReleased(e->{
+      
+        g.fill();
+        g.clearRect(x, y, w, h);
+        g.strokeRect(x, y,w,h);
+          
+            });       
+        canvas.setOnMouseReleased(e->{ 
             
-            
-            g.closePath();
+           g.closePath();
+            g.fillRect(x, y, w, h);  
             g.clearRect(x, y, w, h);
+                     
              xe=e.getX()-x;
              ye=e.getY()-y; 
             g.strokeRect(x, y,w,h);
