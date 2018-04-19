@@ -90,24 +90,23 @@ public   class PaintController {
         canvas.setOnMouseDragged(e->{           
        w=e.getX()-x;
        h=e.getY()-y;     
-        //rect.setFill(Color.WHITE);
-       //g.clearRect(x, y, w, h);
-      //  g.strokeRect(x, y,w,h);
-      
-        g.fill();
+        //g.fill();
+       //g.strokeRect(x, y,w,h);
         g.clearRect(x, y, w, h);
-        g.strokeRect(x, y,w,h);
-          
+       //g.strokeRect(x, y,w,h);
+       //g.fillRect(x, y, w, h);
+        g.strokeRect(x, y, w, h);
+       
+        
             });       
         canvas.setOnMouseReleased(e->{ 
             
-           g.closePath();
-            g.fillRect(x, y, w, h);  
-            g.clearRect(x, y, w, h);
-                     
-             xe=e.getX()-x;
-             ye=e.getY()-y; 
+         
+           // g.fillRect(x, y, w, h);  
+            //g.clearRect(x, y, w, h);
+                  
             g.strokeRect(x, y,w,h);
+              g.closePath();
         });
     }
     
