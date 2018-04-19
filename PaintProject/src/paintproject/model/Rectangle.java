@@ -6,13 +6,13 @@
 package paintproject.model;
 
 import java.awt.Color;
+import java.awt.MouseInfo;
 import java.awt.Point;
 import java.util.Map;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
-
 
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
@@ -40,28 +40,31 @@ import paintproject.model.Circle;
 import paintproject.model.Line;
 import paintproject.model.Rectangle;
 
-
-
-
-
 /**
  *
  * @author Ahmed Bahey
  */
 public class Rectangle extends AbstractShape {
 
-    private double width,height;
+    private double w, h;
     private GraphicsContext g;
-     public Rectangle(double width, double height, double x, double y) {
-        super(x, y);
-        this.width = width;
-        this.height = height;
-       
-        
 
+    public Rectangle(double w, double h, GraphicsContext g, Point p, Color c, Color fillc, Map<String, Double> myMap) {
+        super(p, c, fillc, myMap);
+        this.w = w;
+        this.h = h;
+        this.g = g;
     }
-    public  void setFill(Color green) {
-        
+
+   
+
+   
+
+    
+   
+
+    public void setFill(Color green) {
+
     }
 
     @Override
@@ -69,20 +72,38 @@ public class Rectangle extends AbstractShape {
         return super.clone(); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void draw(Object canvas) {
-        super.draw(canvas);
-       
-        
-        
-                
-        
-                
-        
-        
-   
-    }  
-        
+    //@Override
+    public void draw(Canvas canvas) {
+        // super.draw(canvas);
+        GraphicsContext g = canvas.getGraphicsContext2D();
+        canvas.setOnMousePressed(e -> {
+            g.beginPath();
+            p.x = (int) e.getX();
+            p.y= (int) e.getY();
+        });
+
+        canvas.setOnMouseDragged(e -> {
+            this.w = e.getX() - x;
+            this.h = e.getY() - y;
+          
+            g.clearRect(x, y, w, h);
+
+            g.strokeRect(x, y, w, h);
+
+        });
+        canvas.setOnMouseReleased(e -> {
+
+            g.strokeRect(x, y, w, h);
+            g.closePath();
+            Point p=new Point();
+         //   p=MouseInfo.getPointerInfo().getLocation();
+         //   System.out.println("x is"+p.x+"y is "+p.y);
+
+
+        });
+
+    }
+
     @Override
     public Color getFillColor() {
         return super.getFillColor(); //To change body of generated methods, choose Tools | Templates.
@@ -124,22 +145,19 @@ public class Rectangle extends AbstractShape {
     }
 
     public double getWidth() {
-        return width;
+        return w;
     }
 
     public void setWidth(double width) {
-        this.width = width;
+        this.w = width;
     }
 
     public double getHeight() {
-        return height;
+        return h;
     }
 
     public void setHeight(double height) {
-        this.height = height;
+        this.h = height;
     }
-    
-    
-    
-}
 
+}

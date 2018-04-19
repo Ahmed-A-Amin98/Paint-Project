@@ -79,51 +79,19 @@ public   class PaintController {
     
  
     public void drawR(){
-        //Rectangle rect=new Rectangle(0,0,0,0);
-        GraphicsContext g = canvas.getGraphicsContext2D();
-        canvas.setOnMousePressed(e->{
-       g.beginPath();
-       x=e.getX();
-        y=e.getY();                
-        });
+       Rectangle rect=new Rectangle(0,0,0,0);
+       rect.draw(canvas);
        
-        canvas.setOnMouseDragged(e->{           
-       w=e.getX()-x;
-       h=e.getY()-y;     
-        //g.fill();
-       //g.strokeRect(x, y,w,h);
-        g.clearRect(x, y, w, h);
-       //g.strokeRect(x, y,w,h);
-       //g.fillRect(x, y, w, h);
-        g.strokeRect(x, y, w, h);
-       
-        
-            });       
-        canvas.setOnMouseReleased(e->{ 
-            
-         
-           // g.fillRect(x, y, w, h);  
-            //g.clearRect(x, y, w, h);
-                  
-            g.strokeRect(x, y,w,h);
-              g.closePath();
-        });
     }
     
     
-    /* public void Draw(){
-        GraphicsContext g = canvas.getGraphicsContext2D();
-      // canvas.setOnMouseMoved(canvasonmousepressEventHandler2);
-       //canvas.setOnMouseDragged(canvasOnMouseDraggedEventHandler2);
-       //canvas.setOnMouseReleased(canvasOnMouseRelesedEventHandler2);
-        
-         
-        
     
-     
-     
-     
     
+   
+     
+     
+     
+   /* 
     EventHandler<MouseEvent>canvasonmousepressEventHandler2=new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent event) {

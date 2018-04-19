@@ -14,58 +14,66 @@ import java.util.Map;
  * @author dell-pc
  */
 public  abstract class AbstractShape implements Shape{
-    public double x,y;
-     AbstractShape(double x,double y)
-    {
-        this.x=x;
-        this.y=y;
-    }
+    protected Point p;
+    protected Color c;
+    protected Color fillc;
+     protected Map<String, Double> myMap;
 
+    public AbstractShape(Point p, Color c, Color fillc, Map<String, Double> myMap) {
+        this.p = p;
+        this.c = c;
+        this.fillc = fillc;
+        this.myMap = myMap;
+    }
+     
     @Override
     public void setPosition(Point position) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        p=position;
     }
 
     @Override
     public Point getPosition() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      return p;
     }
 
     @Override
     public void setProperties(Map<String, Double> properties) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       myMap=properties;
     }
 
     @Override
     public Map<String, Double> getProperties() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return  myMap;
     }
 
     @Override
     public void setColor(Color color) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        c=color;
     }
 
     @Override
     public Color getColor() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return c;
     }
 
     @Override
     public void setFillColor(Color color) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       fillc=color;
     }
 
     @Override
     public Color getFillColor() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return fillc;
     }
 
     @Override
     public void draw(Object canvas) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    
 
+   
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone(); //To change body of generated methods, choose Tools | Templates.
