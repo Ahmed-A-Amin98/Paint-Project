@@ -1,4 +1,3 @@
-
 package paintproject.controller;
 
 import com.sun.java.accessibility.util.AWTEventMonitor;
@@ -40,16 +39,17 @@ import paintproject.model.Circle;
 import paintproject.model.Line;
 import paintproject.model.Rectangle;
 import javafx.scene.paint.Paint;
+import paintproject.model.Square;
 
 
 public   class PaintController {
 
-    public double x,y,w,h,xe,ye;
+ 
     @FXML
     private Canvas canvas;
 
     @FXML
-    private ColorPicker colorPicker;
+    public ColorPicker colorPicker;
 
     @FXML
     private TextField brushSize;
@@ -61,8 +61,6 @@ public   class PaintController {
 
     public void initialize() {
         GraphicsContext g = canvas.getGraphicsContext2D();
-
-        
             canvas.setOnMouseDragged(e -> {
             double size = Double.parseDouble(brushSize.getText());
             double x = e.getX();
@@ -79,18 +77,34 @@ public   class PaintController {
     
  
     public void drawR(){
-       Rectangle rect=new Rectangle(0,0,0,0);
-       rect.draw(canvas);
-       
+      try{
+          
+          Rectangle r=new Rectangle(null,Color.BLACK,Color.BLACK);
+      r.setColor(Color.RED);
+    
+     r.draw(canvas);
+   
+        
+      }
+      catch(Exception e)
+      {e.printStackTrace();} 
+     
     }
     
-    
-    
-    
+      public void drawS(){
+          
+      try{Square s=new Square(null,Color.BLACK,Color.BLACK);
+      
+           s.setColor(Color.RED);
+
+     s.draw(canvas);
+      
+      }
+      catch(Exception e)
+      {e.printStackTrace();}     
+    }
    
-     
-     
-     
+      
    /* 
     EventHandler<MouseEvent>canvasonmousepressEventHandler2=new EventHandler<MouseEvent>() {
         @Override
@@ -197,11 +211,7 @@ public   class PaintController {
  };
          
     
-   /*
-    public void Rec(){
-      GraphicsContext g;
-        g = canvas.getGraphicsContext2D();
-       
+  
        
          
        

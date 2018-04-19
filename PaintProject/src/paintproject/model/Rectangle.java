@@ -25,6 +25,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javax.imageio.ImageIO;
 import java.io.File;
+import java.util.HashMap;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.Scene;
@@ -46,118 +47,87 @@ import paintproject.model.Rectangle;
  */
 public class Rectangle extends AbstractShape {
 
-    private double w, h;
-    private GraphicsContext g;
+   protected Point p = new Point();
+    protected Map<String, Double> proprec;
+    protected Color c;
+    protected Color fc;
+     int gr,b,a,opacity;
 
-    public Rectangle(double w, double h, GraphicsContext g, Point p, Color c, Color fillc, Map<String, Double> myMap) {
-        super(p, c, fillc, myMap);
-        this.w = w;
-        this.h = h;
-        this.g = g;
+
+    public Rectangle( Point p, Color c, Color fillc) {
+        super(p, c, fillc);
+        proprec = new HashMap<>();
+        proprec.put("w", 0.0);
+        proprec.put("h", 0.0);
+        
     }
-
-   
-
-   
-
     
-   
-
-    public void setFill(Color green) {
-
-    }
+    
 
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone(); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
+
+    
+
     //@Override
     public void draw(Canvas canvas) {
         // super.draw(canvas);
-        GraphicsContext g = canvas.getGraphicsContext2D();
-        canvas.setOnMousePressed(e -> {
-            g.beginPath();
-            p.x = (int) e.getX();
-            p.y= (int) e.getY();
-        });
+            GraphicsContext g = canvas.getGraphicsContext2D();
+            java.awt.Color awtColor = getColor() ;
+            int rr =awtColor.getRed();
+ gr = awtColor.getGreen();
+  b = awtColor.getBlue();
+ a = awtColor.getAlpha();
+  opacity =  (int) (a / 255.0) ;
+ javafx.scene.paint.Color zz = javafx.scene.paint.Color.rgb(rr, gr, b, opacity);
+ g.setStroke(zz);
+            canvas.setOnMousePressed(e -> {
+                g.beginPath();
+             
+               p.x= (int) e.getX();
+                p.y = (int) e.getY();
+            });
+               
+            canvas.setOnMouseDragged(e -> {
+                
+               proprec.put("w", e.getX() - (int)p.getX());
+               proprec.put("h",  e.getY() - (int)p.getY() ); 
+                   
+                g.clearRect((int)p.getX(),(int) p.getY(), (int)proprec.get("w").intValue(), (int)proprec.get("h").intValue());
+                g.strokeRect((int)p.getX(),(int) p.getY(), (int)proprec.get("w").intValue(), (int)proprec.get("h").intValue());
 
-        canvas.setOnMouseDragged(e -> {
-            this.w = e.getX() - x;
-            this.h = e.getY() - y;
-          
-            g.clearRect(x, y, w, h);
+            });
+            canvas.setOnMouseReleased(e -> {
 
-            g.strokeRect(x, y, w, h);
+                g.strokeRect((int)p.getX(),(int) p.getY(), (int)proprec.get("w").intValue(), (int)proprec.get("h").intValue());
+                g.closePath();
+                
 
-        });
-        canvas.setOnMouseReleased(e -> {
-
-            g.strokeRect(x, y, w, h);
-            g.closePath();
-            Point p=new Point();
-         //   p=MouseInfo.getPointerInfo().getLocation();
-         //   System.out.println("x is"+p.x+"y is "+p.y);
-
-
-        });
-
-    }
-
-    @Override
-    public Color getFillColor() {
-        return super.getFillColor(); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setFillColor(Color color) {
-        super.setFillColor(color); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Color getColor() {
-        return super.getColor(); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setColor(Color color) {
-        super.setColor(color); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Map<String, Double> getProperties() {
-        return super.getProperties(); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setProperties(Map<String, Double> properties) {
-        super.setProperties(properties); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Point getPosition() {
-        return super.getPosition(); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setPosition(Point position) {
-        super.setPosition(position); //To change body of generated methods, choose Tools | Templates.
-    }
+                //   System.out.println("x is"+p.x+"y is "+p.y);
+                
+            });
+            
+        } 
+    
 
     public double getWidth() {
-        return w;
+        return (int)proprec.get("w").intValue();
     }
 
     public void setWidth(double width) {
-        this.w = width;
+        proprec.put("w",width);
     }
 
     public double getHeight() {
-        return h;
+        return (int)proprec.get("h").intValue();
     }
 
     public void setHeight(double height) {
-        this.h = height;
+        proprec.put("h",height);
     }
 
 }

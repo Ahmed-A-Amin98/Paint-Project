@@ -17,15 +17,15 @@ public  abstract class AbstractShape implements Shape{
     protected Point p;
     protected Color c;
     protected Color fillc;
-     protected Map<String, Double> myMap;
+    protected Map<String, Double> myMap;
 
-    public AbstractShape(Point p, Color c, Color fillc, Map<String, Double> myMap) {
-        this.p = p;
-        this.c = c;
+    public AbstractShape(Point p,Color c, Color fillc) {
+       this.p=p;
+        this.c =c;
         this.fillc = fillc;
-        this.myMap = myMap;
+       
     }
-     
+    
     @Override
     public void setPosition(Point position) {
         p=position;
@@ -78,6 +78,11 @@ public  abstract class AbstractShape implements Shape{
     public Object clone() throws CloneNotSupportedException {
         return super.clone(); //To change body of generated methods, choose Tools | Templates.
     }
+    
+   
+    
+   
+    
     
      
      

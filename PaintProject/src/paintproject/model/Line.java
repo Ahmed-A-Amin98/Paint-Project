@@ -5,10 +5,30 @@
  */
 package paintproject.model;
 
+import java.awt.Color;
+import java.awt.Point;
+
 /**
  *
  * @author Ahmed Bahey
  */
-public class Line {
+public class Line extends AbstractShape{
+    
+     public Line(Point p, Color c, Color fillc) {
+        super(p, c, fillc);
+    }
+
+    
+   
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void draw(Object canvas) {
+        super.draw(canvas); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="689.0" prefWidth="829.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paintproject.controller.PaintController">
+<BorderPane prefHeight="689.0" prefWidth="829.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paintproject.controller.PaintController">
 
     <top>
         <VBox>
@@ -50,6 +50,7 @@
                  <ColorPicker fx:id="colorPicker" />
                  <CheckBox fx:id="eraser" text="Eraser" />
             <Button fx:id="Rec" mnemonicParsing="false" onAction="#drawR" text="Rectangle" />
+            <Button mnemonicParsing="false" onAction="#drawS" text="Square" />
             </ToolBar>
         </VBox>
     </top>
