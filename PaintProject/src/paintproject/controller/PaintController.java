@@ -30,6 +30,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import static javafx.scene.paint.Color.color;
 import static javafx.scene.paint.Color.color;
@@ -41,10 +42,8 @@ import paintproject.model.Rectangle;
 import javafx.scene.paint.Paint;
 import paintproject.model.Square;
 
+public class PaintController {
 
-public   class PaintController {
-
- 
     @FXML
     private Canvas canvas;
 
@@ -59,53 +58,71 @@ public   class PaintController {
     @FXML
     private Button Rec;
 
+    @FXML
+    private ComboBox comboBox;
+
     public void initialize() {
+        comboBox.getItems().addAll("Rectangle", "Square", "Line", "Circle", "Ellipse", "Triangle");
+    }
+
+    public void freedraw() {
         GraphicsContext g = canvas.getGraphicsContext2D();
-            canvas.setOnMouseDragged(e -> {
+        canvas.setOnMouseDragged(e -> {
             double size = Double.parseDouble(brushSize.getText());
             double x = e.getX();
             double y = e.getY();
             if (eraser.isSelected()) {
-               g.clearRect(x, y, size, size);
+                g.clearRect(x, y, size, size);
             } else {
-              g.setFill(colorPicker.getValue());
-              g.fillRect(x, y, size, size);
+                g.setFill(colorPicker.getValue());
+                g.fillRect(x, y, size, size);
             }
-       });
-        
+        });
     }
-    
- 
-    public void drawR(){
-      try{
-          
-          Rectangle r=new Rectangle(null,Color.BLACK,Color.BLACK);
-      r.setColor(Color.RED);
-    
-     r.draw(canvas);
-   
-        
-      }
-      catch(Exception e)
-      {e.printStackTrace();} 
-     
-    }
-    
-      public void drawS(){
-          
-      try{Square s=new Square(null,Color.BLACK,Color.BLACK);
-      
-           s.setColor(Color.RED);
 
-     s.draw(canvas);
-      
-      }
-      catch(Exception e)
-      {e.printStackTrace();}     
+    public void drawR() {
+        try {
+
+            Rectangle r = new Rectangle(null, Color.BLACK, Color.BLACK);
+            r.setColor(Color.RED);
+
+            r.draw(canvas);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
-   
-      
-   /* 
+
+    public void drawS() {
+
+        try {
+            Square s = new Square(null, Color.BLACK, Color.BLACK);
+
+            s.setColor(Color.RED);
+
+            s.draw(canvas);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void drawL() {
+
+        try {
+            Line l = new Line(null, Color.BLACK, Color.BLACK);
+
+            l.setColor(Color.RED);
+
+            l.draw(canvas);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /* 
     EventHandler<MouseEvent>canvasonmousepressEventHandler2=new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent event) {
@@ -250,7 +267,7 @@ public   class PaintController {
 });
     }     
        
-  */    
+     */
     public void onSave() {
         try {
             Image snapshot = canvas.snapshot(null, null);
@@ -265,5 +282,3 @@ public   class PaintController {
         Platform.exit();
     }
 }
-
-                
