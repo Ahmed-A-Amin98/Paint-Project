@@ -42,6 +42,7 @@ import paintproject.model.Rectangle;
 import javafx.scene.paint.Paint;
 import paintproject.model.Ellipse;
 import paintproject.model.Square;
+import paintproject.model.Triangle;
 
 public class PaintController {
 
@@ -149,6 +150,19 @@ public class PaintController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+      public void drawT() {
+        try {
+
+            Triangle r = new Triangle(null, Color.BLACK, Color.BLACK);
+            r.setColor(Color.RED);
+
+            r.draw(canvas);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
     /* 
     EventHandler<MouseEvent>canvasonmousepressEventHandler2=new EventHandler<MouseEvent>() {

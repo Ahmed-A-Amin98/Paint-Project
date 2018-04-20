@@ -73,6 +73,7 @@
             <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="Shapes" />
             <Button mnemonicParsing="false" onAction="#drawC" text="Circle" />
             <Button mnemonicParsing="false" onAction="#drawEll" text="Ellipse" />
+            <Button mnemonicParsing="false" onAction="#drawT" text="Triangle" />
             </ToolBar>
         </VBox>
     </top>
