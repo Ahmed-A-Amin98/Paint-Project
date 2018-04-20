@@ -68,8 +68,12 @@ public class Line extends AbstractShape{
 
             propLine.put("x", e.getX()); 
             propLine.put("y", e.getY());
-            //g.strokeLine((int) p1.getX(), (int) p1.getY(), (int) propLine.get("x").intValue(), (int) propLine.get("y").intValue());
-           
+            
+            
+      g.clearRect((int)p1.getX(),(int) p1.getY(), (int)propLine.get("x").intValue(), (int)propLine.get("y").intValue());
+
+       g.strokeLine((int) p1.getX(), (int) p1.getY(), (int) propLine.get("x").intValue(), (int) propLine.get("y").intValue());
+
  
            
 
