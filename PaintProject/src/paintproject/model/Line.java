@@ -43,6 +43,7 @@ public class Line extends AbstractShape{
     }
 
     
+      @Override
     public void draw(Canvas canvas) {
         //super.draw(canvas); //To change body of generated methods, choose Tools | Templates.
         GraphicsContext g = canvas.getGraphicsContext2D();

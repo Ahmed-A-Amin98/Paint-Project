@@ -40,7 +40,9 @@ import paintproject.model.Circle;
 import paintproject.model.Line;
 import paintproject.model.Rectangle;
 import javafx.scene.paint.Paint;
+import paintproject.model.AbstractShape;
 import paintproject.model.Ellipse;
+
 import paintproject.model.Square;
 import paintproject.model.Triangle;
 
@@ -68,7 +70,7 @@ public class PaintController {
     }
 
     public void freedraw() {
-        GraphicsContext g = canvas.getGraphicsContext2D();
+      GraphicsContext g = canvas.getGraphicsContext2D();
         canvas.setOnMouseDragged(e -> {
             double size = Double.parseDouble(brushSize.getText());
             double x = e.getX();
@@ -111,7 +113,8 @@ public class PaintController {
     }
 
     public void drawL() {
-
+        
+       
         try {
             Line l = new Line(null, Color.BLACK, Color.BLACK);
 
@@ -119,7 +122,7 @@ public class PaintController {
 
             l.draw(canvas);
 
-        } catch (Exception e) {
+       } catch (Exception e) {
             e.printStackTrace();
         }
     }

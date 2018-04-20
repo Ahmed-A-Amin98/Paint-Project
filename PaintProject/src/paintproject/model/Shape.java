@@ -1,6 +1,8 @@
 
 package paintproject.model;
 
+import javafx.scene.canvas.Canvas;
+
 
 public interface Shape    {
     public void setPosition(java.awt.Point position);
@@ -14,6 +16,7 @@ public void setFillColor(java.awt.Color color);
 public java.awt.Color getFillColor();
 /* redraw the shape on the canvas,
  for swing, you will cast canvas to java.awt.Graphics */
-public void draw(Object canvas);
+public void draw(Canvas canvas);
+//public void draw(Object canvas);
 public Object clone() throws CloneNotSupportedException; 
 }

@@ -14,13 +14,10 @@ import paintproject.model.Rectangle;
 import paintproject.model.Square;
 import paintproject.model.Triangle;
 
-/**
- *
- * @author amrak
- */
+
 public class Factory {
     
-    public Object chooseshape(String Shape){
+    public AbstractShape chooseshape(String Shape){
 
         if(Shape.equalsIgnoreCase("RECTANGLE")){
           return new Rectangle(null,java.awt.Color.BLACK,java.awt.Color.BLACK); 
@@ -29,19 +26,19 @@ public class Factory {
         if(Shape.equalsIgnoreCase("SQUARE")){
           return new Square(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
         }if(Shape.equalsIgnoreCase("LINE")){
-         // return new Line();
+       return new Line(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
         }
         
         if(Shape.equalsIgnoreCase("ELLIPSE")){
-        //  return new Ellipse(); 
+         return new Ellipse(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
         }
         
         if(Shape.equalsIgnoreCase("TRIANGLE")){
-        //   return new Triangle();
+        return new Triangle(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
         }
         
         if(Shape.equalsIgnoreCase("CIRCLE")){
-       //  return new Circle();
+      return new Circle(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
         }
         return null;
         
