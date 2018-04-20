@@ -23,7 +23,6 @@ public class Triangle extends AbstractShape {
         propt.put("w", 0.0);
     }
 
-
   
 
      
@@ -52,27 +51,19 @@ public class Triangle extends AbstractShape {
                 p1.y = (int) e.getY();
             });
       canvas.setOnMouseDragged(e -> {
-           propt.put("w", e.getY() - (int)p2.getY());
-    //  propt.put("w", e.getX() - (int)p1.getX()); 
-//    
-//         
-//     double[] Xcoord = { (int)p1.getX()+Math.abs((int)propt.get("w").intValue())/2 ,(int)p1.getX() ,(int)p2.getX() };
-//    double[] Ycoord = { (int)p1.getY(),(int) p2.getY(),(int) p2.getY()};      
-//   
-//      g.clearRect((int)p1.getX()+Math.abs((int)propt.get("w").intValue())/2 ,(int)p1.getX() ,(int)p2.getX(),(int)propt.get("w").intValue());
-//     g.clearRect((int)p1.getY(),(int) p2.getY(),(int) p2.getY(),(int)propt.get("w").intValue());
-//      g.setStroke(g.getStroke());
-//
-//        g.strokePolygon(Xcoord, Ycoord, 3);
-           });
+                
+                      propt.put("w", e.getX() - (int)p1.getX());
+
+
+           
+            });
        canvas.setOnMouseReleased(e -> {
        p2.x= (int) e.getX();
-       p2.y = (int) e.getY();
-      double[] Xcoord = { (int)p1.getX()+Math.abs((int)propt.get("w").intValue())/2 ,(int)p1.getX() ,(int)p2.getX() };
-    double[] Ycoord = { (int)p1.getY(),(int) p2.getY(),(int) p2.getY()};
-
-    g.setStroke(g.getStroke()); //sets the color
-    g.strokePolygon(Xcoord, Ycoord, 3); //draws a regular triangle
+                p2.y = (int) e.getY();
+        double[] Xcoord = { (int)p1.getX()+Math.abs((int)propt.get("w").intValue())/2 ,(int)p1.getX() ,(int)p2.getX() };
+        double[] Ycoord = { (int)p1.getY(),(int) p2.getY(),(int) p2.getY()};
+          g.setStroke(g.getStroke()); //sets the color
+          g.strokePolygon(Xcoord, Ycoord, 3); //draws a regular triangle
               
         g.closePath();
         });
