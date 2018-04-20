@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package paintproject.model;
 
 import java.awt.Color;
@@ -15,10 +11,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javax.swing.*;
 
-/**
- *
- * @author dell-pc
- */
+
 public class Circle extends AbstractShape{
     
     protected Point pc = new Point();
@@ -68,17 +61,18 @@ public class Circle extends AbstractShape{
 
         canvas.setOnMouseDragged(e -> {
 
-            propCircle.put("x", e.getX()); 
-            propCircle.put("y", e.getY());
+            propCircle.put("r", e.getX()); 
+            propCircle.put("r", e.getY());
             //g.strokeLine((int) p1.getX(), (int) p1.getY(), (int) propLine.get("x").intValue(), (int) propLine.get("y").intValue());
-           
+
  
            
 
         });
         canvas.setOnMouseReleased(e -> {
+                   g.strokeOval(.5*(int)pc.x, .5*(int)pc.y, (int) propCircle.get("r").intValue(),(int) propCircle.get("r").intValue());            
 
-        g.strokeOval((int)pc.x, (int)pc.y, r, 0);            
+        //g.strokeOval((int)pc.x, (int)pc.y, 2*r, 2*r);            
         g.closePath();
 
             //   System.out.println("x is"+p.x+"y is "+p.y);
