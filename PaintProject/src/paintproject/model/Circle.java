@@ -61,8 +61,13 @@ public class Circle extends AbstractShape{
 
         canvas.setOnMouseDragged(e -> {
 
-            propCircle.put("r", e.getX()); 
-            propCircle.put("r", e.getY());
+            propCircle.put("r", e.getX() - (int)pc.getX());
+               propCircle.put("r",  e.getY() - (int)pc.getY() ); 
+               
+               
+                g.clearRect((int)pc.getX(),(int) pc.getY(), (int)propCircle.get("r").intValue(), (int)propCircle.get("r").intValue());
+                g.strokeOval((int)pc.getX(),(int) pc.getY(), (int)propCircle.get("r").intValue(), (int)propCircle.get("r").intValue());
+
             //g.strokeLine((int) p1.getX(), (int) p1.getY(), (int) propLine.get("x").intValue(), (int) propLine.get("y").intValue());
 
  
@@ -70,7 +75,7 @@ public class Circle extends AbstractShape{
 
         });
         canvas.setOnMouseReleased(e -> {
-                   g.strokeOval(.5*(int)pc.x, .5*(int)pc.y, (int) propCircle.get("r").intValue(),(int) propCircle.get("r").intValue());            
+                   g.strokeOval((int)pc.x, (int)pc.y,  propCircle.get("r").intValue(), propCircle.get("r").intValue());            
 
         //g.strokeOval((int)pc.x, (int)pc.y, 2*r, 2*r);            
         g.closePath();
