@@ -17,6 +17,7 @@ public class Triangle extends AbstractShape {
     protected Color c;
     protected Color fc;
     int gr,b,a,opacity;
+    int gr2, b2, a2, opacity2;
     public Triangle(Point p, Color c, Color fillc) {
         super(p, c, fillc);
         propt = new HashMap<>();
@@ -29,7 +30,17 @@ public class Triangle extends AbstractShape {
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return super.clone(); //To change body of generated methods, choose Tools | Templates.
+        //return super.clone(); //To change body of generated methods, choose Tools | Templates.
+        
+            AbstractShape r = new Triangle(p, c, fillc);
+        r.setColor(c);
+        r.setFillColor(fc);
+        r.setPosition(p);
+        Map newprop = new HashMap<>();
+        for (Map.Entry s: propt.entrySet())
+            newprop.put(s.getKey(), s.getValue());
+        r.setProperties(newprop);
+        return r;
     }
 
        public void draw( Canvas canvas )
@@ -42,11 +53,21 @@ public class Triangle extends AbstractShape {
  a = awtColor.getAlpha();
   opacity =  (int) (a / 255.0) ;
  javafx.scene.paint.Color zz = javafx.scene.paint.Color.rgb(rr, gr, b, opacity);
- g.setStroke(zz);
+   java.awt.Color fillColor = getFillColor();
+        int rr2 = fillColor.getRed();
+        gr2 = fillColor.getGreen();
+        b2 = fillColor.getBlue();
+        a2 = fillColor.getAlpha();
+        opacity2 = (int) (a2 / 255.0);
+        javafx.scene.paint.Color z = javafx.scene.paint.Color.rgb(rr2, gr2, b2, opacity2);
+        g.setStroke(zz);
+        g.setFill(z);
+
+ 
   canvas.setOnMousePressed(e -> {
                 
                 g.beginPath();
-             
+               propt.put("w", 0.0);
                p1.x= (int) e.getX();
                 p1.y = (int) e.getY();
             });

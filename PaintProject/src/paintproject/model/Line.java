@@ -26,6 +26,7 @@ public class Line extends AbstractShape{
     protected Color c;
     protected Color fc;
     int gr, b, a, opacity;
+   
     
      public Line(Point p, Color c, Color fillc) {
         super(p, c, fillc);
@@ -39,7 +40,17 @@ public class Line extends AbstractShape{
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return super.clone(); //To change body of generated methods, choose Tools | Templates.
+        //return super.clone(); //To change body of generated methods, choose Tools | Templates.
+        
+              AbstractShape r = new Line(p, c, fillc);
+        r.setColor(c);
+        r.setFillColor(fc);
+        r.setPosition(p);
+        Map newprop = new HashMap<>();
+        for (Map.Entry s: propLine.entrySet())
+            newprop.put(s.getKey(), s.getValue());
+        r.setProperties(newprop);
+        return r;
     }
 
     
@@ -66,11 +77,12 @@ public class Line extends AbstractShape{
 
         canvas.setOnMouseDragged(e -> {
 
+            
             propLine.put("x", e.getX()); 
             propLine.put("y", e.getY());
-         g.clearRect((int)p1.getX(),(int) p1.getY(), (int)propLine.get("x").intValue(), (int)propLine.get("y").intValue());
+        // g.clearRect((int)p1.getX(),(int) p1.getY(), (int)propLine.get("x").intValue(), (int)propLine.get("y").intValue());
 
-            g.strokeLine((int) p1.getX(), (int) p1.getY(), (int) propLine.get("x").intValue(), (int) propLine.get("y").intValue());
+            //g.strokeLine((int) p1.getX(), (int) p1.getY(), (int) propLine.get("x").intValue(), (int) propLine.get("y").intValue());
             
  
            

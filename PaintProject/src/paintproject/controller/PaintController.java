@@ -40,12 +40,14 @@ import paintproject.model.Circle;
 import paintproject.model.Line;
 import paintproject.model.Rectangle;
 import javafx.scene.paint.Paint;
+import paintproject.model.AbstractShape;
 import paintproject.model.Ellipse;
 import paintproject.model.Square;
 import paintproject.model.Triangle;
 
 public class PaintController {
 
+    double x,y,Tx,Ty;
     @FXML
     private Canvas canvas;
 
@@ -85,9 +87,9 @@ public class PaintController {
     public void drawR() {
         try {
 
-            Rectangle r = new Rectangle(null, Color.BLACK, Color.BLACK);
-            r.setColor(Color.RED);
-
+           Rectangle r = new Rectangle(null, Color.BLACK, Color.BLACK);
+           r.setColor(Color.BLUE);
+           r.setFillColor(Color.YELLOW);
             r.draw(canvas);
 
         } catch (Exception e) {
@@ -101,7 +103,8 @@ public class PaintController {
         try {
             Square s = new Square(null, Color.BLACK, Color.BLACK);
 
-            s.setColor(Color.RED);
+            s.setColor(Color.YELLOW);
+            s.setFillColor(Color.YELLOW);
 
             s.draw(canvas);
 
@@ -129,6 +132,9 @@ public class PaintController {
             Circle c = new Circle(null, Color.BLACK, Color.BLACK);
 
             c.setColor(Color.RED);
+             c.setFillColor(Color.BLUE);
+             javafx.scene.paint.Color str=colorPicker.getValue();
+             
 
             c.draw(canvas);
 
@@ -156,6 +162,7 @@ public class PaintController {
 
             Triangle r = new Triangle(null, Color.BLACK, Color.BLACK);
             r.setColor(Color.RED);
+            r.setFillColor(Color.BLUE);
 
             r.draw(canvas);
 
@@ -164,6 +171,44 @@ public class PaintController {
         }
 
     }
+      //////////////////////////////////////////////////////
+       public void Drag(){
+        GraphicsContext g = canvas.getGraphicsContext2D();
+        canvas.setOnMouseMoved(canvasonmousepressEventHandler);
+        canvas.setOnMouseDragged(canvasOnMouseDraggedEventHandler);
+       
+        
+    }
+    
+    EventHandler<MouseEvent>canvasonmousepressEventHandler=new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+           GraphicsContext g = canvas.getGraphicsContext2D();
+           g.beginPath();
+           x=event.getX();
+           y=event.getY();
+           Tx = ((Canvas)(event.getSource())).getTranslateX();
+          Ty = ((Canvas) (event.getSource())).getTranslateY();
+        }
+    };
+    
+    
+     EventHandler<MouseEvent> canvasOnMouseDraggedEventHandler = new EventHandler<MouseEvent>()
+    {
+        @Override
+        public void handle(MouseEvent mouseEvent)
+        {
+            double offsetX = mouseEvent.getSceneX() - x;
+            double offsetY = mouseEvent.getSceneY() - y;
+            double newTranslateX = Tx + offsetX;
+            double newTranslateY = Ty + offsetY;
+
+            ((Canvas) (mouseEvent.getSource())).setTranslateX(newTranslateX);  //transform the object
+            ((Canvas) (mouseEvent.getSource())).setTranslateY(newTranslateY);
+        }
+    };
+     
+     ///////////////////////////////////////////////////////////////
     /* 
     EventHandler<MouseEvent>canvasonmousepressEventHandler2=new EventHandler<MouseEvent>() {
         @Override
@@ -323,4 +368,7 @@ public class PaintController {
     public void onExit() {
         Platform.exit();
     }
+    
+    
+   
 }

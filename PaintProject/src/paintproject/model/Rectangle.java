@@ -47,87 +47,106 @@ import paintproject.model.Rectangle;
  */
 public class Rectangle extends AbstractShape {
 
-   protected Point p = new Point();
+    protected Point p = new Point();
     protected Map<String, Double> proprec;
     protected Color c;
     protected Color fc;
-     int gr,b,a,opacity;
+    int gr, b, a, opacity;
+    int gr2, b2, a2, opacity2;
 
-
-    public Rectangle( Point p, Color c, Color fillc) {
+    public Rectangle(Point p, Color c, Color fillc) {
         super(p, c, fillc);
         proprec = new HashMap<>();
         proprec.put("w", 0.0);
         proprec.put("h", 0.0);
-        
+
     }
-    
-    
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return super.clone(); //To change body of generated methods, choose Tools | Templates.
+        // return super.clone(); //To change body of generated methods, choose Tools | Templates.
+
+        AbstractShape r = new Rectangle(p, c, fillc);
+        r.setColor(c);
+        r.setFillColor(fc);
+        r.setPosition(p);
+        Map newprop = new HashMap<>();
+        for (Map.Entry s : proprec.entrySet()) {
+            newprop.put(s.getKey(), s.getValue());
+        }
+        r.setProperties(newprop);
+        return r;
     }
-
-    
-
-    
 
     //@Override
     public void draw(Canvas canvas) {
         // super.draw(canvas);
-            GraphicsContext g = canvas.getGraphicsContext2D();
-            java.awt.Color awtColor = getColor() ;
-            int rr =awtColor.getRed();
- gr = awtColor.getGreen();
-  b = awtColor.getBlue();
- a = awtColor.getAlpha();
-  opacity =  (int) (a / 255.0) ;
- javafx.scene.paint.Color zz = javafx.scene.paint.Color.rgb(rr, gr, b, opacity);
- g.setStroke(zz);
-            canvas.setOnMousePressed(e -> {
-                g.beginPath();
-             
-               p.x= (int) e.getX();
-                p.y = (int) e.getY();
-            });
-               
-            canvas.setOnMouseDragged(e -> {
-                
-               proprec.put("w", e.getX() - (int)p.getX());
-               proprec.put("h",  e.getY() - (int)p.getY() ); 
-                   
-                g.clearRect((int)p.getX(),(int) p.getY(), (int)proprec.get("w").intValue(), (int)proprec.get("h").intValue());
-                g.strokeRect((int)p.getX(),(int) p.getY(), (int)proprec.get("w").intValue(), (int)proprec.get("h").intValue());
+        GraphicsContext g = canvas.getGraphicsContext2D();
+        java.awt.Color awtColor = getColor();
+        int rr = awtColor.getRed();
+        gr = awtColor.getGreen();
+        b = awtColor.getBlue();
+        a = awtColor.getAlpha();
+        opacity = (int) (a / 255.0);
+        javafx.scene.paint.Color zz = javafx.scene.paint.Color.rgb(rr, gr, b, opacity);
 
-            });
-            canvas.setOnMouseReleased(e -> {
+        java.awt.Color fillColor = getFillColor();
+        int rr2 = fillColor.getRed();
+        gr2 = fillColor.getGreen();
+        b2 = fillColor.getBlue();
+        a2 = fillColor.getAlpha();
+        opacity2 = (int) (a2 / 255.0);
+        javafx.scene.paint.Color z = javafx.scene.paint.Color.rgb(rr2, gr2, b2, opacity2);
+        g.setStroke(zz);
+        g.setFill(z);
 
-                g.strokeRect((int)p.getX(),(int) p.getY(), (int)proprec.get("w").intValue(), (int)proprec.get("h").intValue());
-                g.closePath();
-                
+        canvas.setOnMousePressed(e -> {
+            g.beginPath();
 
-                //   System.out.println("x is"+p.x+"y is "+p.y);
-                
-            });
+            proprec.put("w", 0.0);
+            proprec.put("h", 0.0);
+            p.x = Math.abs((int) e.getX());
+            p.y = Math.abs((int) e.getY());
+        });
+
+        canvas.setOnMouseDragged(e -> {
+
+            proprec.put("w",Math.abs( e.getX() - (int) p.getX()));
+            proprec.put("h",Math.abs( e.getY() - (int) p.getY()));
+
+            //g.clearRect(Math.abs((int) p.getX()), Math.abs((int) p.getY()), Math.abs((int) proprec.get("w").intValue()), Math.abs((int) proprec.get("h").intValue()));
+            //g.strokeRect(Math.abs((int) p.getX()),Math.abs((int) p.getY()),Math.abs((int) proprec.get("w").intValue()),Math.abs((int) proprec.get("h").intValue()));
+          // g.clearRect(Math.abs((int) p.getX())+1, Math.abs((int) p.getY())+1, Math.abs((int) proprec.get("w").intValue())+1, Math.abs((int) proprec.get("h").intValue()+1));
+
             
-        } 
-    
+        });
+        canvas.setOnMouseReleased(e -> {
+
+            g.fillRect(Math.abs((int) p.getX()),Math.abs((int) p.getY()), Math.abs((int) proprec.get("w").intValue()),Math.abs((int) proprec.get("h").intValue()));
+           
+        
+            g.closePath();
+
+            //   System.out.println("x is"+p.x+"y is "+p.y);
+        });
+        
+
+    }
 
     public double getWidth() {
-        return (int)proprec.get("w").intValue();
+        return (int) proprec.get("w").intValue();
     }
 
     public void setWidth(double width) {
-        proprec.put("w",width);
+        proprec.put("w", width);
     }
 
     public double getHeight() {
-        return (int)proprec.get("h").intValue();
+        return (int) proprec.get("h").intValue();
     }
 
     public void setHeight(double height) {
-        proprec.put("h",height);
+        proprec.put("h", height);
     }
 
 }

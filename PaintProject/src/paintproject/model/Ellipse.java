@@ -23,6 +23,7 @@ public class Ellipse extends AbstractShape{
     protected Color c;
     protected Color fc;
      int gr,b,a,opacity;
+     int gr2, b2, a2, opacity2;
     
     
     public Ellipse(Point p, Color c, Color fillc) {
@@ -35,7 +36,17 @@ public class Ellipse extends AbstractShape{
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return super.clone(); //To change body of generated methods, choose Tools | Templates.
+       // return super.clone(); //To change body of generated methods, choose Tools | Templates.
+       
+             AbstractShape r = new Ellipse(p, c, fillc);
+        r.setColor(c);
+        r.setFillColor(fc);
+        r.setPosition(p);
+        Map newprop = new HashMap<>();
+        for (Map.Entry s: propell.entrySet())
+            newprop.put(s.getKey(), s.getValue());
+        r.setProperties(newprop);
+        return r;
     }
 
     
@@ -49,10 +60,22 @@ public class Ellipse extends AbstractShape{
  a = awtColor.getAlpha();
   opacity =  (int) (a / 255.0) ;
  javafx.scene.paint.Color zz = javafx.scene.paint.Color.rgb(rr, gr, b, opacity);
- g.setStroke(zz);
+ 
+   java.awt.Color fillColor = getFillColor();
+        int rr2 = fillColor.getRed();
+        gr2 = fillColor.getGreen();
+        b2 = fillColor.getBlue();
+        a2 = fillColor.getAlpha();
+        opacity2 = (int) (a2 / 255.0);
+        javafx.scene.paint.Color z = javafx.scene.paint.Color.rgb(rr2, gr2, b2, opacity2);
+        g.setStroke(zz);
+        g.setFill(z);
+
+ 
             canvas.setOnMousePressed(e -> {
                 g.beginPath();
-             
+                propell.put("w", 0.0);
+                propell.put("h", 0.0);
                pell.x= (int) e.getX();
                 pell.y = (int) e.getY();
             });
@@ -62,8 +85,8 @@ public class Ellipse extends AbstractShape{
                propell.put("w", e.getX() - (int)pell.getX());
                propell.put("h",  e.getY() - (int)pell.getY() ); 
                    
-                g.clearRect((int)pell.getX(),(int) pell.getY(), (int)propell.get("w").intValue(), (int)propell.get("h").intValue());
-                g.strokeOval((int)pell.getX(),(int) pell.getY(), (int)propell.get("w").intValue(), (int)propell.get("h").intValue());
+                //g.clearRect((int)pell.getX(),(int) pell.getY(), (int)propell.get("w").intValue(), (int)propell.get("h").intValue());
+                //g.strokeOval((int)pell.getX(),(int) pell.getY(), (int)propell.get("w").intValue(), (int)propell.get("h").intValue());
 
             });
             canvas.setOnMouseReleased(e -> {
