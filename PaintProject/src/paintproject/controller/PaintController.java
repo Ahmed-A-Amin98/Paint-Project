@@ -40,6 +40,7 @@ import paintproject.model.Circle;
 import paintproject.model.Line;
 import paintproject.model.Rectangle;
 import javafx.scene.paint.Paint;
+import paintproject.model.Ellipse;
 import paintproject.model.Square;
 
 public class PaintController {
@@ -134,7 +135,21 @@ public class PaintController {
             e.printStackTrace();
         }
     }
+     
+     
+      public void drawEll() {
 
+        try {
+            Ellipse e = new Ellipse(null, Color.BLACK, Color.BLACK);
+
+            e.setColor(Color.RED);
+
+            e.draw(canvas);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     /* 
     EventHandler<MouseEvent>canvasonmousepressEventHandler2=new EventHandler<MouseEvent>() {
         @Override
