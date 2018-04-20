@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="689.0" prefWidth="829.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paintproject.controller.PaintController">
+<BorderPane prefHeight="689.0" prefWidth="829.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paintproject.controller.PaintController">
 
     <top>
         <VBox>
@@ -55,6 +55,7 @@
             <Button mnemonicParsing="false" onAction="#drawS" text="Square" />
             <Button mnemonicParsing="false" onAction="#drawL" text="Line" />
             <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="Shapes" />
+            <Button mnemonicParsing="false" onAction="#drawC" text="Circle" />
             </ToolBar>
         </VBox>
     </top>

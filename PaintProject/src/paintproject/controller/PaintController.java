@@ -121,6 +121,19 @@ public class PaintController {
             e.printStackTrace();
         }
     }
+     public void drawC() {
+
+        try {
+            Circle c = new Circle(null, Color.BLACK, Color.BLACK);
+
+            c.setColor(Color.RED);
+
+            c.draw(canvas);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /* 
     EventHandler<MouseEvent>canvasonmousepressEventHandler2=new EventHandler<MouseEvent>() {
