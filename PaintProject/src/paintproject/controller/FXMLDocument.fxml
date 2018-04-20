@@ -11,6 +11,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -51,8 +53,22 @@
                 </HBox>
                  <ColorPicker fx:id="colorPicker" />
                  <CheckBox fx:id="eraser" text="Eraser" />
-            <Button fx:id="Rec" mnemonicParsing="false" onAction="#drawR" text="Rectangle" />
-            <Button mnemonicParsing="false" onAction="#drawS" text="Square" />
+            <Button fx:id="Rec" mnemonicParsing="false" onAction="#drawR" prefHeight="37.0" prefWidth="40.0">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Icon/images/imageedit_6_7033249996.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button mnemonicParsing="false" onAction="#drawS" prefHeight="35.0" prefWidth="37.0">
+               <graphic>
+                  <ImageView fitHeight="26.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Icon/images/imageedit_1_3004626955.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
             <Button mnemonicParsing="false" onAction="#drawL" text="Line" />
             <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="Shapes" />
             <Button mnemonicParsing="false" onAction="#drawC" text="Circle" />
