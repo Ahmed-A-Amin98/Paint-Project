@@ -3,6 +3,7 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Menu?>
@@ -43,42 +44,53 @@
             </Menu>
             </MenuBar>
 
-            <ToolBar>
-                <HBox alignment="CENTER" spacing="5">
-               <Button mnemonicParsing="false" onAction="#freedraw" text="Free Draw" />
-                    <TextField fx:id="brushSize" prefHeight="31.0" prefWidth="72.0" />
+            <ToolBar prefHeight="0.0" prefWidth="1253.0">
+                <HBox alignment="CENTER" spacing="10.0">
+               <Button mnemonicParsing="false" onAction="#freedraw" text="Free Draw" textFill="#1702f8" />
+               <TextField editable="false" prefHeight="31.0" prefWidth="53.0" text="Font:" />
+                    <TextField fx:id="brushSize" prefHeight="31.0" prefWidth="49.0" />
+                    <ColorPicker fx:id="colorPicker" />
+                    <CheckBox fx:id="eraser" text="Eraser" textFill="#3013ee" />
+               <Button fx:id="Rec" mnemonicParsing="false" onAction="#drawR" prefHeight="37.0" prefWidth="40.0">
+                  <graphic>
+                     <ImageView fitHeight="24.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../Icon/images/imageedit_6_7033249996.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+               <Button mnemonicParsing="false" onAction="#drawS" prefHeight="35.0" prefWidth="37.0">
+                  <graphic>
+                     <ImageView fitHeight="26.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../Icon/images/imageedit_1_3004626955.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+               <Button mnemonicParsing="false" onAction="#drawC" text="Circle" />
+               <Button mnemonicParsing="false" onAction="#drawL" text="Line" />
+               <Button mnemonicParsing="false" onAction="#drawT" text="Triangle" />
+               <Button mnemonicParsing="false" onAction="#drawEll" text="Ellipse" />
+               <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="Shapes" />
                <effect>
                   <Glow />
                </effect>
                 </HBox>
-                 <ColorPicker fx:id="colorPicker" />
-                 <CheckBox fx:id="eraser" text="Eraser" />
-            <Button fx:id="Rec" mnemonicParsing="false" onAction="#drawR" prefHeight="37.0" prefWidth="40.0">
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Icon/images/imageedit_6_7033249996.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-            <Button mnemonicParsing="false" onAction="#drawS" prefHeight="35.0" prefWidth="37.0">
-               <graphic>
-                  <ImageView fitHeight="26.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Icon/images/imageedit_1_3004626955.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-            <Button mnemonicParsing="false" onAction="#drawL" text="Line" />
-            <Button mnemonicParsing="false" onAction="#drawC" text="Circle" />
-            <Button mnemonicParsing="false" onAction="#drawEll" text="Ellipse" />
-            <Button mnemonicParsing="false" onAction="#drawT" text="Triangle" />
-            <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="Shapes" />
+            <Button mnemonicParsing="false" text="Delete" />
             </ToolBar>
         </VBox>
     </top>
    <left>
-        <Canvas fx:id="canvas" height="735.0" width="1253.0" BorderPane.alignment="CENTER" />
+        <Canvas fx:id="canvas" height="735.0" width="1038.0" BorderPane.alignment="CENTER" />
    </left>
+   <right>
+      <VBox prefHeight="735.0" prefWidth="205.0" BorderPane.alignment="CENTER">
+         <children>
+            <ChoiceBox prefHeight="31.0" prefWidth="218.0" />
+         </children>
+      </VBox>
+   </right>
 
 </BorderPane>

@@ -8,6 +8,7 @@ package paintproject.model;
 import java.awt.Color;
 import java.awt.Point;
 import java.util.Map;
+import javafx.scene.canvas.Canvas;
 
 /**
  *
@@ -67,8 +68,8 @@ public  abstract class AbstractShape implements Shape{
     }
 
     @Override
-    public void draw(Object canvas) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void draw(Canvas canvas) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

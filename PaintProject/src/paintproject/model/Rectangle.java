@@ -50,7 +50,7 @@ public class Rectangle extends AbstractShape {
     protected Point p = new Point();
     protected Map<String, Double> proprec;
     protected Color c;
-    protected Color fc;
+    protected Color fillc;
     int gr, b, a, opacity;
     int gr2, b2, a2, opacity2;
 
@@ -68,7 +68,7 @@ public class Rectangle extends AbstractShape {
 
         AbstractShape r = new Rectangle(p, c, fillc);
         r.setColor(c);
-        r.setFillColor(fc);
+        r.setFillColor(fillc);
         r.setPosition(p);
         Map newprop = new HashMap<>();
         for (Map.Entry s : proprec.entrySet()) {
@@ -78,7 +78,8 @@ public class Rectangle extends AbstractShape {
         return r;
     }
 
-    //@Override
+    
+    @Override
     public void draw(Canvas canvas) {
         // super.draw(canvas);
         GraphicsContext g = canvas.getGraphicsContext2D();
@@ -122,7 +123,7 @@ public class Rectangle extends AbstractShape {
         });
         canvas.setOnMouseReleased(e -> {
 
-            g.fillRect(Math.abs((int) p.getX()),Math.abs((int) p.getY()), Math.abs((int) proprec.get("w").intValue()),Math.abs((int) proprec.get("h").intValue()));
+            g.strokeRect(Math.abs((int) p.getX()),Math.abs((int) p.getY()), Math.abs((int) proprec.get("w").intValue()),Math.abs((int) proprec.get("h").intValue()));
            
         
             g.closePath();

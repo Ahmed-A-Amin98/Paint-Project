@@ -27,6 +27,7 @@ import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 
 import javafx.scene.control.Button;
@@ -40,14 +41,16 @@ import paintproject.model.Circle;
 import paintproject.model.Line;
 import paintproject.model.Rectangle;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Shape;
 import paintproject.model.AbstractShape;
 import paintproject.model.Ellipse;
 import paintproject.model.Square;
 import paintproject.model.Triangle;
+//import jfxtras.labs.util.event.MouseControlUtil;
 
 public class PaintController {
 
-    double x,y,Tx,Ty;
+    double x, y, Tx, Ty;
     @FXML
     private Canvas canvas;
 
@@ -86,11 +89,32 @@ public class PaintController {
 
     public void drawR() {
         try {
+         
+           // Rectangle r = new Rectangle(null, Color.BLACK, Color.BLACK);
+            //r.setColor(Color.BLUE);
+            //r.setFillColor(Color.YELLOW);
+            //r.draw(canvas);
+            Factory f=new Factory();
+            AbstractShape R;
+            R=f.chooseshape("RECTANGLE");
+           R.setColor(Color.YELLOW);
+           R.setFillColor(Color.WHITE);
+            R.draw(canvas);
 
-           Rectangle r = new Rectangle(null, Color.BLACK, Color.BLACK);
-           r.setColor(Color.BLUE);
-           r.setFillColor(Color.YELLOW);
-            r.draw(canvas);
+          //  for (int y = 0; y < 10; y++) {
+              //  for (int x = 0; x < 10; x++) {
+
+                   // Shape shape = new javafx.scene.shape.Rectangle(size, size);
+                   // shape.setFill(new javafx.scene.paint.Color(0, 0, 0, 0.5));
+                    //shape.setStroke(javafx.scene.paint.Color.WHITE);
+                    //shape.setStrokeWidth(3);
+                    //shape.setLayoutX(offset + x * (size + gap));
+                   // shape.setLayoutY(offset + y * (size + gap));
+                    //MouseControlUtil.makeDraggable(shape);
+                    //windowContent.getContentPane().getChildren().add(shape);
+
+                //}
+         //   }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -101,12 +125,12 @@ public class PaintController {
     public void drawS() {
 
         try {
-            Square s = new Square(null, Color.BLACK, Color.BLACK);
-
-            s.setColor(Color.YELLOW);
-            s.setFillColor(Color.YELLOW);
-
-            s.draw(canvas);
+            Factory f=new Factory();
+            AbstractShape R;
+            R=f.chooseshape("Square");
+           R.setColor(Color.YELLOW);
+           R.setFillColor(Color.WHITE);
+            R.draw(canvas);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -116,88 +140,85 @@ public class PaintController {
     public void drawL() {
 
         try {
-            Line l = new Line(null, Color.BLACK, Color.BLACK);
-
-            l.setColor(Color.RED);
-
-            l.draw(canvas);
-
+            Factory f=new Factory();
+            AbstractShape R;
+            R=f.chooseshape("LINE");
+           R.setColor(Color.YELLOW);
+           R.setFillColor(Color.WHITE);
+            R.draw(canvas);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-     public void drawC() {
+
+    public void drawC() {
 
         try {
-            Circle c = new Circle(null, Color.BLACK, Color.BLACK);
-
-            c.setColor(Color.RED);
-             c.setFillColor(Color.BLUE);
-             javafx.scene.paint.Color str=colorPicker.getValue();
-             
-
-            c.draw(canvas);
+            Factory f=new Factory();
+            AbstractShape R;
+            R=f.chooseshape("CIRCLE");
+           R.setColor(Color.YELLOW);
+           R.setFillColor(Color.WHITE);
+            R.draw(canvas);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-     
-     
-      public void drawEll() {
+
+    public void drawEll() {
 
         try {
-            Ellipse e = new Ellipse(null, Color.BLACK, Color.BLACK);
-
-            e.setColor(Color.RED);
-
-            e.draw(canvas);
+            Factory f=new Factory();
+            AbstractShape R;
+            R=f.chooseshape("ELLIPSE");
+           R.setColor(Color.YELLOW);
+           R.setFillColor(Color.WHITE);
+            R.draw(canvas);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-      public void drawT() {
+
+    public void drawT() {
         try {
 
-            Triangle r = new Triangle(null, Color.BLACK, Color.BLACK);
-            r.setColor(Color.RED);
-            r.setFillColor(Color.BLUE);
-
-            r.draw(canvas);
-
+            Factory f=new Factory();
+            AbstractShape R;
+            R=f.chooseshape("TRIANGLE");
+           R.setColor(Color.YELLOW);
+           R.setFillColor(Color.WHITE);
+            R.draw(canvas);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
-      //////////////////////////////////////////////////////
-       public void Drag(){
+    //////////////////////////////////////////////////////
+
+    public void Drag() {
         GraphicsContext g = canvas.getGraphicsContext2D();
         canvas.setOnMouseMoved(canvasonmousepressEventHandler);
         canvas.setOnMouseDragged(canvasOnMouseDraggedEventHandler);
-       
-        
+
     }
-    
-    EventHandler<MouseEvent>canvasonmousepressEventHandler=new EventHandler<MouseEvent>() {
+
+    EventHandler<MouseEvent> canvasonmousepressEventHandler = new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent event) {
-           GraphicsContext g = canvas.getGraphicsContext2D();
-           g.beginPath();
-           x=event.getX();
-           y=event.getY();
-           Tx = ((Canvas)(event.getSource())).getTranslateX();
-          Ty = ((Canvas) (event.getSource())).getTranslateY();
+            GraphicsContext g = canvas.getGraphicsContext2D();
+            g.beginPath();
+            x = event.getX();
+            y = event.getY();
+            Tx = ((Canvas) (event.getSource())).getTranslateX();
+            Ty = ((Canvas) (event.getSource())).getTranslateY();
         }
     };
-    
-    
-     EventHandler<MouseEvent> canvasOnMouseDraggedEventHandler = new EventHandler<MouseEvent>()
-    {
+
+    EventHandler<MouseEvent> canvasOnMouseDraggedEventHandler = new EventHandler<MouseEvent>() {
         @Override
-        public void handle(MouseEvent mouseEvent)
-        {
+        public void handle(MouseEvent mouseEvent) {
             double offsetX = mouseEvent.getSceneX() - x;
             double offsetY = mouseEvent.getSceneY() - y;
             double newTranslateX = Tx + offsetX;
@@ -207,8 +228,8 @@ public class PaintController {
             ((Canvas) (mouseEvent.getSource())).setTranslateY(newTranslateY);
         }
     };
-     
-     ///////////////////////////////////////////////////////////////
+
+    ///////////////////////////////////////////////////////////////
     /* 
     EventHandler<MouseEvent>canvasonmousepressEventHandler2=new EventHandler<MouseEvent>() {
         @Override
@@ -368,7 +389,5 @@ public class PaintController {
     public void onExit() {
         Platform.exit();
     }
-    
-    
-   
+
 }

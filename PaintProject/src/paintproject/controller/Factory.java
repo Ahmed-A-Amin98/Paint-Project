@@ -5,7 +5,6 @@
  */
 package paintproject.controller;
 
-import javafx.scene.paint.Color;
 import paintproject.model.AbstractShape;
 import paintproject.model.Circle;
 import paintproject.model.Ellipse;
@@ -13,6 +12,7 @@ import paintproject.model.Line;
 import paintproject.model.Rectangle;
 import paintproject.model.Square;
 import paintproject.model.Triangle;
+import java.awt.Color;
 
 /**
  *
@@ -20,30 +20,31 @@ import paintproject.model.Triangle;
  */
 public class Factory {
     
-    public Object chooseshape(String Shape){
+    public AbstractShape chooseshape(String Shape){
 
+        AbstractShape A=null;
         if(Shape.equalsIgnoreCase("RECTANGLE")){
-          return new Rectangle(null,java.awt.Color.BLACK,java.awt.Color.BLACK); 
+          A= new Rectangle(null,Color.BLACK,Color.BLACK); 
         }
         
         if(Shape.equalsIgnoreCase("SQUARE")){
-          return new Square(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
+         A=new Square(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
         }if(Shape.equalsIgnoreCase("LINE")){
-          return new Line(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
+         A= new Line(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
         }
         
         if(Shape.equalsIgnoreCase("ELLIPSE")){
-       return new Ellipse(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
+      A=new Ellipse(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
         }
         
         if(Shape.equalsIgnoreCase("TRIANGLE")){
-     return new Triangle(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
+    A=new Triangle(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
         }
         
         if(Shape.equalsIgnoreCase("CIRCLE")){
-      return new Circle(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
+      A= new Circle(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
         }
-        return null;
+        return A;
         
     }
     
