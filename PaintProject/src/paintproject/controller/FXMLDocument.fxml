@@ -17,7 +17,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<<<<<<< HEAD
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paintproject.controller.PaintController">
+=======
+<<<<<<< HEAD
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paintproject.controller.PaintController">
+=======
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paintproject.controller.PaintController">
+>>>>>>> d17d9d6ec4e228c9f1b4d312ebea25aea12eb833
+>>>>>>> 7b2893297c64d53b19fcec4570c36cbec4fbf2d2
 
     <top>
         <VBox>
@@ -78,15 +86,34 @@
                </effect>
                 </HBox>
             <Button mnemonicParsing="false" text="Delete" />
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 7b2893297c64d53b19fcec4570c36cbec4fbf2d2
             <Button mnemonicParsing="false" onAction="#save" text="Save" />
             <Button mnemonicParsing="false" onAction="#Select" text="Select" />
             <Button mnemonicParsing="false" onAction="#Drag" text="Move" />
           
+<<<<<<< HEAD
+=======
+=======
+            <Button mnemonicParsing="false" onAction="#Select" text="Select" />
+            <Button mnemonicParsing="false" onAction="#Drag" text="Drag" />
+>>>>>>> d17d9d6ec4e228c9f1b4d312ebea25aea12eb833
+>>>>>>> 7b2893297c64d53b19fcec4570c36cbec4fbf2d2
             </ToolBar>
         </VBox>
     </top>
    <left>
+<<<<<<< HEAD
         <Canvas fx:id="canvas" height="994.0" width="1921.0" BorderPane.alignment="CENTER" />
+=======
+<<<<<<< HEAD
+        <Canvas fx:id="canvas" height="994.0" width="1921.0" BorderPane.alignment="CENTER" />
+=======
+        <Canvas fx:id="canvas" height="1008.0" width="1920.0" BorderPane.alignment="CENTER" />
+>>>>>>> d17d9d6ec4e228c9f1b4d312ebea25aea12eb833
+>>>>>>> 7b2893297c64d53b19fcec4570c36cbec4fbf2d2
    </left>
    <right>
       <VBox prefHeight="735.0" prefWidth="205.0" BorderPane.alignment="CENTER" />

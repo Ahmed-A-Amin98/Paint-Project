@@ -45,10 +45,23 @@ public class Factory {
         if(Shape.equalsIgnoreCase("CIRCLE")){
       A= new Circle(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
         }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 7b2893297c64d53b19fcec4570c36cbec4fbf2d2
          if(Shape.equalsIgnoreCase("SELECT")){
       A= new Select(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
         }
   
+<<<<<<< HEAD
+=======
+=======
+        
+          if(Shape.equalsIgnoreCase("SELECT")){
+      A= new Circle(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
+        }
+>>>>>>> d17d9d6ec4e228c9f1b4d312ebea25aea12eb833
+>>>>>>> 7b2893297c64d53b19fcec4570c36cbec4fbf2d2
         return A;
         
     }
