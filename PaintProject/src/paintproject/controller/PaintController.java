@@ -8,6 +8,7 @@ import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseMotionList
 import java.awt.AWTEventMulticaster;
 import java.awt.Color;
 import static java.awt.Color.red;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -44,8 +45,11 @@ import paintproject.model.Line;
 import paintproject.model.Rectangle;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Shape;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import paintproject.model.AbstractShape;
 import paintproject.model.Ellipse;
+import paintproject.model.Select;
 import paintproject.model.Square;
 import paintproject.model.Triangle;
 import paintproject.view.DrawingEngine;
@@ -76,11 +80,13 @@ private Button redobtn;
     
     @FXML
     private ComboBox comboColors;
+    
+    private Stage stage;
       
 
-    public void initialize() {
+  public void initialize() {
          
-        comboBox.getItems().addAll("Rectangle", "Square", "Line", "Circle", "Ellipse", "Triangle");
+       /* comboBox.getItems().addAll("Rectangle", "Square", "Line", "Circle", "Ellipse", "Triangle");
          comboBox.setOnAction(e->{
             if(comboBox.getValue()=="Rectangle")
                 drawR();
@@ -105,7 +111,7 @@ private Button redobtn;
          comboColors.getItems().addAll("BlACK","BlUE","CYAN","DARK_GRAY","GRAY","GREEN","LIGHT_GRAY","MAGENTA","ORANGE","PINK","RED","WHITE","YELLOW");
         
        
-         
+         */
     }
 
     public void freedraw() {
@@ -122,41 +128,26 @@ private Button redobtn;
             }
         });
     }
+    
+     public void save(){
+         FileChooser fileChooser = new FileChooser();
+         FileChooser.ExtensionFilter extFilter1 = new FileChooser.ExtensionFilter("xml files (*.xml)", "xml");
+           FileChooser.ExtensionFilter extFilter2 = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+         fileChooser.getExtensionFilters().add(extFilter1);
+         fileChooser.getExtensionFilters().add(extFilter2);
+         File file = fileChooser.showOpenDialog(stage);
+    }
 
     public void drawR() {
         try {
-         
-           // Rectangle r = new Rectangle(null, Color.BLACK, Color.BLACK);
-            //r.setColor(Color.BLUE);
-            //r.setFillColor(Color.YELLOW);
-            //r.draw(canvas);
+   
             Factory f=new Factory();
             AbstractShape R;
             R=f.chooseshape("RECTANGLE");
            R.setColor(Color.YELLOW);
            R.setFillColor(Color.WHITE);
             R.draw(canvas);
-            
-            
-                    
 
-            
-           
-
-          //  for (int y = 0; y < 10; y++) {
-              //  for (int x = 0; x < 10; x++) {
-
-                   // Shape shape = new javafx.scene.shape.Rectangle(size, size);
-                   // shape.setFill(new javafx.scene.paint.Color(0, 0, 0, 0.5));
-                    //shape.setStroke(javafx.scene.paint.Color.WHITE);
-                    //shape.setStrokeWidth(3);
-                    //shape.setLayoutX(offset + x * (size + gap));
-                   // shape.setLayoutY(offset + y * (size + gap));
-                    //MouseControlUtil.makeDraggable(shape);
-                    //windowContent.getContentPane().getChildren().add(shape);
-
-                //}
-         //   }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -222,6 +213,24 @@ private Button redobtn;
             e.printStackTrace();
         }
     }
+    public void Select() {
+        try {
+      
+            Factory f=new Factory();
+            AbstractShape R;
+            R=f.chooseshape("SELECT");
+           R.setColor(Color.YELLOW);
+           R.setFillColor(Color.WHITE);
+            R.draw(canvas);
+            Point p=new Point();
+            p=R.getPosition();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 
     public void drawT() {
         try {
@@ -239,7 +248,7 @@ private Button redobtn;
     }
     //////////////////////////////////////////////////////
 
-    public void Drag() {
+   public void Drag() {
         GraphicsContext g = canvas.getGraphicsContext2D();
         canvas.setOnMouseMoved(canvasonmousepressEventHandler);
         canvas.setOnMouseDragged(canvasOnMouseDraggedEventHandler);
@@ -249,12 +258,14 @@ private Button redobtn;
     EventHandler<MouseEvent> canvasonmousepressEventHandler = new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent event) {
+        Select s= new Select(null, red, red);
+        Point p = new Point();
             GraphicsContext g = canvas.getGraphicsContext2D();
             g.beginPath();
             x = event.getX();
             y = event.getY();
-            Tx = ((Canvas) (event.getSource())).getTranslateX();
-            Ty = ((Canvas) (event.getSource())).getTranslateY();
+            Tx =s.getX();
+            Ty =s.getY() ;
         }
     };
 
