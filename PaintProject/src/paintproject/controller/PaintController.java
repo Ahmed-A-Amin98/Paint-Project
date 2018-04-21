@@ -1,5 +1,7 @@
 package paintproject.controller;
 
+import paintproject.model.Caretaker;
+import paintproject.model.Originator;
 import com.sun.java.accessibility.util.AWTEventMonitor;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseListener;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseMotionListener;
@@ -46,10 +48,14 @@ import paintproject.model.AbstractShape;
 import paintproject.model.Ellipse;
 import paintproject.model.Square;
 import paintproject.model.Triangle;
+import paintproject.view.DrawingEngine;
 //import jfxtras.labs.util.event.MouseControlUtil;
 
-public class PaintController {
-
+public class PaintController implements DrawingEngine {
+     @FXML
+private Button undobtn;
+      @FXML
+private Button redobtn;
     double x, y, Tx, Ty;
     @FXML
     private Canvas canvas;
@@ -67,9 +73,39 @@ public class PaintController {
 
     @FXML
     private ComboBox comboBox;
+    
+    @FXML
+    private ComboBox comboColors;
+      
 
     public void initialize() {
+         
         comboBox.getItems().addAll("Rectangle", "Square", "Line", "Circle", "Ellipse", "Triangle");
+         comboBox.setOnAction(e->{
+            if(comboBox.getValue()=="Rectangle")
+                drawR();
+            else
+                if (comboBox.getValue()=="Square")
+                    drawS();
+            else
+                    if (comboBox.getValue()=="Line")
+                        drawL();
+            else
+                        if (comboBox.getValue()=="Circle")
+                            drawC();
+            else
+                            if (comboBox.getValue()=="Ellipse")
+                                drawEll();
+            else
+                                if (comboBox.getValue()=="Triangle")
+                                    drawT();
+                                  
+        });
+         
+         comboColors.getItems().addAll("BlACK","BlUE","CYAN","DARK_GRAY","GRAY","GREEN","LIGHT_GRAY","MAGENTA","ORANGE","PINK","RED","WHITE","YELLOW");
+        
+       
+         
     }
 
     public void freedraw() {
@@ -100,6 +136,12 @@ public class PaintController {
            R.setColor(Color.YELLOW);
            R.setFillColor(Color.WHITE);
             R.draw(canvas);
+            
+            
+                    
+
+            
+           
 
           //  for (int y = 0; y < 10; y++) {
               //  for (int x = 0; x < 10; x++) {
@@ -127,9 +169,9 @@ public class PaintController {
         try {
             Factory f=new Factory();
             AbstractShape R;
-            R=f.chooseshape("Square");
+            R=f.chooseshape("SQUARE");
            R.setColor(Color.YELLOW);
-           R.setFillColor(Color.WHITE);
+           R.setFillColor((Color) comboColors.getValue());
             R.draw(canvas);
 
         } catch (Exception e) {
@@ -390,4 +432,50 @@ public class PaintController {
         Platform.exit();
     }
 
+    @Override
+    public void refresh(Object canvas) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addShape(paintproject.model.Shape shape) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void removeShape(paintproject.model.Shape shape) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void updateShape(paintproject.model.Shape oldShape, paintproject.model.Shape newShape) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public paintproject.model.Shape[] getShapes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void undo() {
+        
+    }
+
+    @Override
+    public void redo() {
+       
+    }
+
+    @Override
+    public void save(String path) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void load(String path) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
+

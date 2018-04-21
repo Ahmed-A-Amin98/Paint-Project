@@ -31,6 +31,7 @@ import javafx.event.EventType;
 import javafx.scene.Scene;
 
 import javafx.scene.control.Button;
+import static javafx.scene.input.KeyCode.R;
 import javafx.scene.input.MouseEvent;
 import static javafx.scene.paint.Color.color;
 import static javafx.scene.paint.Color.color;
@@ -78,7 +79,6 @@ public class Rectangle extends AbstractShape {
         return r;
     }
 
-    
     @Override
     public void draw(Canvas canvas) {
         // super.draw(canvas);
@@ -112,25 +112,27 @@ public class Rectangle extends AbstractShape {
 
         canvas.setOnMouseDragged(e -> {
 
-            proprec.put("w",Math.abs( e.getX() - (int) p.getX()));
-            proprec.put("h",Math.abs( e.getY() - (int) p.getY()));
+            proprec.put("w", Math.abs(e.getX() - (int) p.getX()));
+            proprec.put("h", Math.abs(e.getY() - (int) p.getY()));
 
             //g.clearRect(Math.abs((int) p.getX()), Math.abs((int) p.getY()), Math.abs((int) proprec.get("w").intValue()), Math.abs((int) proprec.get("h").intValue()));
             //g.strokeRect(Math.abs((int) p.getX()),Math.abs((int) p.getY()),Math.abs((int) proprec.get("w").intValue()),Math.abs((int) proprec.get("h").intValue()));
-          // g.clearRect(Math.abs((int) p.getX())+1, Math.abs((int) p.getY())+1, Math.abs((int) proprec.get("w").intValue())+1, Math.abs((int) proprec.get("h").intValue()+1));
-
-            
+            // g.clearRect(Math.abs((int) p.getX())+1, Math.abs((int) p.getY())+1, Math.abs((int) proprec.get("w").intValue())+1, Math.abs((int) proprec.get("h").intValue()+1));
         });
         canvas.setOnMouseReleased(e -> {
 
-            g.strokeRect(Math.abs((int) p.getX()),Math.abs((int) p.getY()), Math.abs((int) proprec.get("w").intValue()),Math.abs((int) proprec.get("h").intValue()));
-           
-        
+            g.strokeRect(Math.abs((int) p.getX()), Math.abs((int) p.getY()), Math.abs((int) proprec.get("w").intValue()), Math.abs((int) proprec.get("h").intValue()));
+
             g.closePath();
 
-            //   System.out.println("x is"+p.x+"y is "+p.y);
+            originator.set(this);
+            caretaker.addMemento(originator.storeInMemento());
+            AbstractShape.saveFiles++;
+            AbstractShape.currentArticle++;
+
+            System.out.println("Save Files " + AbstractShape.saveFiles);
+
         });
-        
 
     }
 
@@ -148,6 +150,11 @@ public class Rectangle extends AbstractShape {
 
     public void setHeight(double height) {
         proprec.put("h", height);
+    }
+
+    @Override
+    public String toString() {//overriding the toString() method  
+        return p + " " + proprec + " " + c + " " + fillc;
     }
 
 }

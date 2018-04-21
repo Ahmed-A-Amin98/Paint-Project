@@ -14,6 +14,7 @@ public class PaintProject extends Application {
     public void start(Stage stage) throws Exception {
        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"))));
        stage.show();
+       
     }
 
     public static void main(String[] args) {

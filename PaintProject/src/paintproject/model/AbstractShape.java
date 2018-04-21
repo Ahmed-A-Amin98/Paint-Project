@@ -19,6 +19,9 @@ public  abstract class AbstractShape implements Shape{
     protected Color c;
     protected Color fillc;
     protected Map<String, Double> myMap;
+     Caretaker caretaker=new Caretaker();
+         Originator originator=new Originator();
+       static  int saveFiles = 0, currentArticle = 0;
 
     public AbstractShape(Point p,Color c, Color fillc) {
        this.p=p;

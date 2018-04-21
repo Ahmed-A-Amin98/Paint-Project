@@ -92,7 +92,12 @@ public class Circle extends AbstractShape {
             //g.strokeOval((int)pc.x, (int)pc.y, 2*r, 2*r);            
             g.closePath();
 
-            //   System.out.println("x is"+p.x+"y is "+p.y);
+            originator.set(this);
+            caretaker.addMemento(originator.storeInMemento());
+           AbstractShape.saveFiles++;
+            AbstractShape.currentArticle++;
+
+            System.out.println("Save Files " + AbstractShape.saveFiles);
         });
 
     }

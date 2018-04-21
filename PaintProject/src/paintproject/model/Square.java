@@ -95,7 +95,12 @@ public class Square extends AbstractShape {
             g.fillRect((int) p.getX(), (int) p.getY(), (int) propsq.get("s").intValue(), (int) propsq.get("s").intValue());
             g.closePath();
 
-            //   System.out.println("x is"+p.x+"y is "+p.y);
+            originator.set(this);
+            caretaker.addMemento(originator.storeInMemento());
+            saveFiles++;
+            currentArticle++;
+
+            System.out.println("Save Files " + saveFiles);
         });
 
     }
