@@ -140,15 +140,35 @@ private Button redobtn;
 
     public void drawR() {
         try {
+<<<<<<< HEAD
    
+=======
+
+>>>>>>> d17d9d6ec4e228c9f1b4d312ebea25aea12eb833
             Factory f=new Factory();
             AbstractShape R;
             R=f.chooseshape("RECTANGLE");
            R.setColor(Color.YELLOW);
            R.setFillColor(Color.WHITE);
             R.draw(canvas);
+<<<<<<< HEAD
 
+=======
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+>>>>>>> d17d9d6ec4e228c9f1b4d312ebea25aea12eb833
 
+    }
+    public void Select() {
+        try {
+      
+           Factory f=new Factory();
+            AbstractShape R;
+            R=f.chooseshape("SELECT");
+           R.setColor(Color.YELLOW);
+           R.setFillColor(Color.WHITE);
+            R.draw(canvas);
         } catch (Exception e) {
             e.printStackTrace();
         }
