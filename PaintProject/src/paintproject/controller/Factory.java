@@ -13,6 +13,7 @@ import paintproject.model.Rectangle;
 import paintproject.model.Square;
 import paintproject.model.Triangle;
 import java.awt.Color;
+import paintproject.model.Select;
 
 /**
  *
@@ -44,8 +45,13 @@ public class Factory {
         if(Shape.equalsIgnoreCase("CIRCLE")){
       A= new Circle(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
         }
+         if(Shape.equalsIgnoreCase("SELECT")){
+      A= new Select(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
+        }
+  
         return A;
         
     }
+    
     
 }
