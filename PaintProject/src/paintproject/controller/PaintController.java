@@ -8,6 +8,7 @@ import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseMotionList
 import java.awt.AWTEventMulticaster;
 import java.awt.Color;
 import static java.awt.Color.red;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -46,6 +47,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Shape;
 import paintproject.model.AbstractShape;
 import paintproject.model.Ellipse;
+import paintproject.model.Select;
 import paintproject.model.Square;
 import paintproject.model.Triangle;
 import paintproject.view.DrawingEngine;
@@ -125,39 +127,27 @@ private Button redobtn;
 
     public void drawR() {
         try {
-         
-           // Rectangle r = new Rectangle(null, Color.BLACK, Color.BLACK);
-            //r.setColor(Color.BLUE);
-            //r.setFillColor(Color.YELLOW);
-            //r.draw(canvas);
+
             Factory f=new Factory();
             AbstractShape R;
             R=f.chooseshape("RECTANGLE");
            R.setColor(Color.YELLOW);
            R.setFillColor(Color.WHITE);
             R.draw(canvas);
-            
-            
-                    
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-            
-           
-
-          //  for (int y = 0; y < 10; y++) {
-              //  for (int x = 0; x < 10; x++) {
-
-                   // Shape shape = new javafx.scene.shape.Rectangle(size, size);
-                   // shape.setFill(new javafx.scene.paint.Color(0, 0, 0, 0.5));
-                    //shape.setStroke(javafx.scene.paint.Color.WHITE);
-                    //shape.setStrokeWidth(3);
-                    //shape.setLayoutX(offset + x * (size + gap));
-                   // shape.setLayoutY(offset + y * (size + gap));
-                    //MouseControlUtil.makeDraggable(shape);
-                    //windowContent.getContentPane().getChildren().add(shape);
-
-                //}
-         //   }
-
+    }
+    public void Select() {
+        try {
+      
+           Factory f=new Factory();
+            AbstractShape R;
+            R=f.chooseshape("SELECT");
+           R.setColor(Color.YELLOW);
+           R.setFillColor(Color.WHITE);
+            R.draw(canvas);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -249,12 +239,14 @@ private Button redobtn;
     EventHandler<MouseEvent> canvasonmousepressEventHandler = new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent event) {
+        Select s= new Select(null, red, red);
+        Point p = new Point();
             GraphicsContext g = canvas.getGraphicsContext2D();
             g.beginPath();
             x = event.getX();
             y = event.getY();
-            Tx = ((Canvas) (event.getSource())).getTranslateX();
-            Ty = ((Canvas) (event.getSource())).getTranslateY();
+            Tx =s.getX();
+            Ty =s.getY() ;
         }
     };
 

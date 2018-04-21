@@ -44,6 +44,10 @@ public class Factory {
         if(Shape.equalsIgnoreCase("CIRCLE")){
       A= new Circle(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
         }
+        
+          if(Shape.equalsIgnoreCase("SELECT")){
+      A= new Circle(null,java.awt.Color.BLACK,java.awt.Color.BLACK);
+        }
         return A;
         
     }

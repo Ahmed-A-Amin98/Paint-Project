@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="814.0" prefWidth="1248.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paintproject.controller.PaintController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paintproject.controller.PaintController">
 
     <top>
         <VBox>
@@ -78,12 +78,13 @@
                </effect>
                 </HBox>
             <Button mnemonicParsing="false" text="Delete" />
-            <ComboBox fx:id="comboColors" prefWidth="150.0" />
+            <Button mnemonicParsing="false" onAction="#Select" text="Select" />
+            <Button mnemonicParsing="false" onAction="#Drag" text="Drag" />
             </ToolBar>
         </VBox>
     </top>
    <left>
-        <Canvas fx:id="canvas" height="735.0" width="1038.0" BorderPane.alignment="CENTER" />
+        <Canvas fx:id="canvas" height="1008.0" width="1920.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
       <VBox prefHeight="735.0" prefWidth="205.0" BorderPane.alignment="CENTER" />
